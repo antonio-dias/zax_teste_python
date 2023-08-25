@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  container-mysqldb:
+    container_name: container-mysqldb
+    image: mysql:oracle
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - .docker/db-mysql:/var/lib/mysql
+    networks:
+      - network_zax_test
+
+  container-api:
+    container_name: container-api
+    image: python-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - MYSQL_HOST=container-mysqldb
+      - MYSQL_USER=antonio
+      - MYSQL_PASSWORD=admin
+    ports:
+      - "5000:5000"
+    entrypoint: /app/entrypoint.sh
+    depends_on:
+      - container-mysqldb
+    tty:
+      true
+    restart:
+      unless-stopped
+    networks:
+      - network_zax_test
+
+volumes:
+  .docker:
+
+networks:
+  network_zax_test: { }

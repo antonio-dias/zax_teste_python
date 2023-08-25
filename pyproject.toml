@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = ""
+authors = ["Antonio Dias <antonio_g_d@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.4.0"
+flask = "^2.3.3"
+python-dotenv = "^1.0.0"
+sqlalchemy = "^2.0.20"
+pymysql = "^1.1.0"
+alembic = "^1.11.3"
+mock-alchemy = "^0.2.6"
+cryptography = "^41.0.3"
+flask-pydantic-spec = "^0.4.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
