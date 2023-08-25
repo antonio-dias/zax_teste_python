@@ -9,8 +9,6 @@ services:
       - .env
     ports:
       - "3306:3306"
-    volumes:
-      - .docker/db-mysql:/var/lib/mysql
     networks:
       - network_zax_test
 
@@ -37,9 +35,6 @@ services:
       unless-stopped
     networks:
       - network_zax_test
-
-volumes:
-  .docker:
 
 networks:
   network_zax_test: { }
